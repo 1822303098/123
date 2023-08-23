@@ -1,0 +1,16 @@
+# 重写规则配置片段包含若干条重写规则，并可以包含若干作用于 MitM 的主机名；可通过资源引用的方式使用。
+# 片段文件将保存在 Quantumult X 目录下的 Profiles 子目录中。
+# 样例可参见 https://raw.githubusercontent.com/crossutility/Quantumult-X/master/sample-import-rewrite.snippet
+ 
+ 
+ 
+;^http://example.com/resource1/4/ url reject-dict
+#XiaomaoGroup
+#优质脚本
+
+脚本功能：京东比价
+
+京东比价
+# 这个是内嵌式的，用资源片段，开解析器
+http-response ^https?://api\.m\.jd\.com/client\.action\?functionId=(wareBusiness|serverConfig|basicConfig) script-path=https://raw.githubusercontent.com/zwf234/rules/master/js/jd_price.js, requires-body=true, timeout=10, tag=jd_price.js
+hostname=api.m.jd.com
